@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Shoe Store</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_login">Login</string>
+    <string name="login_existing">Login existing user</string>
+    <string name="login_new">Login new user</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_login">Login</string>
+    <string name="title_welcome">Welcome!</string>
+    <string name="title_instructions">Instructions</string>
+    <string name="title_shoe_list">Shoes</string>
+    <string name="shoe_name">Great Dancing Shoes</string>
+    <string name="welcome_text">Welcome to the Shoe Store!</string>
+    <string name="about_text">We offer a wide range of shoes for all your needs from, with a special focus on exotic dancing shoes.</string>
+    <string name="instructions_nav_btn_text">Read Instructions</string>
+    <string name="shoe_list_nav_btn_text">Check out the shoes</string>
+    <string name="instructions_text_short">Please scroll the shoe list to ensure we have what all appropriate makes and models in stock.</string>
+    <string name="instructions_text_long">To update a model, click on it and update the details. To add missing inventory, click on add an ensure each field is entered.</string>
+    <string name="shoe_back_btn_text">Back</string>
+    <string name="logout_text">Logout</string>
+    <string name="error" />
+    <string name="title_add_shoes">Add Shoes</string>
+    <string name="name_label">Name</string>
+    <string name="company_label">Company</string>
+    <string name="size_label">Size</string>
+    <string name="description_label">Description></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add">Add</string>
+    <string name="dismiss_btn">Dismiss</string>
+</resources>
