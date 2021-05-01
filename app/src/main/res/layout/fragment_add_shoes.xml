@@ -12,15 +12,22 @@
             type="fi.monad.shoestore.ui.shoes.ShoeListViewModel" />
     </data>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/mainScreen"
-        android:orientation="vertical">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_vert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:barrierDirection="right"
+            app:constraint_referenced_ids="l1, l2, l3, l4" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:paddingTop="12dp"
@@ -28,186 +35,157 @@
             android:text="@string/title_add_shoes"
             android:textAllCaps="true"
             android:textColor="@color/purple_700"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <GridLayout
-        android:id="@+id/add_shoes_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:useDefaultMargins="true"
-        android:alignmentMode="alignBounds"
-        android:columnOrderPreserved="false"
-        android:columnCount="2"
-        android:orientation="horizontal"
-        tools:context=".GridXMLActivity">
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/horizontal_barrier_0"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_columnWeight="1">
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="title" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_columnSpan="2"
-                android:layout_gravity="right|center_horizontal|fill"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="5dp"
-                android:paddingTop="20dp"
-                android:text="@string/name_label" />
-        </LinearLayout>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/l1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:height="32dp"
+            android:paddingTop="8dp"
+            android:text="@string/name_label"
+            android:textAlignment="textEnd"
+            app:flow_verticalAlign="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_barrier_0" />
+
+
+        <EditText
+            android:id="@+id/name"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_columnWeight="2">
+            android:layout_height="wrap_content"
+            android:text="@={addShoesViewModel.newShoes.name}"
+            android:afterTextChanged="@{addShoesViewModel::setName}"
+            android:layout_margin="8dp"
+            app:layout_constraintLeft_toRightOf="@+id/barrier_vert"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_barrier_0" />
 
-            <EditText
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@={addShoesViewModel.newShoes.name}"
-                android:afterTextChanged="@{addShoesViewModel::setName}"
-                android:layout_columnSpan="2"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="5dp"
-                android:paddingTop="20dp"
-                android:layout_gravity="fill" />
-        </LinearLayout>
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/horizontal_barrier_1"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_columnWeight="1">
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="l1, name" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_columnSpan="2"
-                android:layout_gravity="fill"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="5dp"
-                android:paddingTop="20dp"
-                android:text="@string/company_label" />
-        </LinearLayout>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/l2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:paddingTop="8dp"
+            android:text="@string/company_label"
+            android:textAlignment="viewEnd"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/barrier_vert"
+            app:layout_constraintTop_toBottomOf="@+id/horizontal_barrier_1" />
+
+        <EditText
+            android:id="@+id/company"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_columnWeight="2">
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:afterTextChanged="@{addShoesViewModel::setCompany}"
+            android:text="@{addShoesViewModel.newShoes.company}"
+            app:layout_constraintLeft_toRightOf="@+id/barrier_vert"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/horizontal_barrier_1"  />
 
-            <EditText
-                android:id="@+id/company"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@{addShoesViewModel.newShoes.company}"
-                android:afterTextChanged="@{addShoesViewModel::setCompany}"
-                android:layout_columnSpan="2"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="5dp"
-                android:paddingTop="20dp"
-                android:layout_gravity="fill"/>
-        </LinearLayout>
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/horizontal_barrier_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="l2, company" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_columnWeight="1">
+        <TextView
+            android:id="@+id/l3"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:paddingTop="8dp"
+            android:text="@string/size_label"
+            android:textAlignment="viewEnd"
+            app:layout_constraintLeft_toRightOf="@+id/barrier_vert"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_barrier_2" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnSpan="2"
-                    android:layout_gravity="fill"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:paddingTop="20dp"
-                    android:text="@string/size_label" />
-            </LinearLayout>
+        <EditText
+            android:id="@+id/size"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(addShoesViewModel.newShoes.size)}"
+            android:afterTextChanged="@{addShoesViewModel::setSize}"
+            android:layout_margin="8dp"
+            app:layout_constraintLeft_toRightOf="@+id/barrier_vert"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_barrier_2" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_columnWeight="2">
 
-                <EditText
-                    android:id="@+id/size"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@{String.valueOf(addShoesViewModel.newShoes.size)}"
-                    android:afterTextChanged="@{addShoesViewModel::setSize}"
-                    android:layout_columnSpan="2"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:paddingTop="20dp"
-                    android:layout_gravity="fill" />
-            </LinearLayout>
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/horizontal_barrier_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="l3, size" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_columnWeight="1">
+        <TextView
+            android:id="@+id/l4"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:paddingTop="8dp"
+            android:text="@string/description_label"
+            android:textAlignment="viewEnd"
+            app:layout_constraintLeft_toRightOf="@+id/barrier_vert"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_barrier_3" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnSpan="2"
-                    android:layout_gravity="fill"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:paddingTop="20dp"
-                    android:text="@string/description_label" />
-            </LinearLayout>
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{addShoesViewModel.newShoes.description}"
+            android:afterTextChanged="@{addShoesViewModel::setDescription}"
+            android:layout_margin="8dp"
+            app:layout_constraintLeft_toRightOf="@+id/barrier_vert"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_barrier_3" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_columnWeight="2">
-
-                <EditText
-                    android:id="@+id/description"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@{addShoesViewModel.newShoes.description}"
-                    android:afterTextChanged="@{addShoesViewModel::setDescription}"
-                    android:layout_columnSpan="2"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:paddingTop="20dp"
-                    android:layout_gravity="fill" />
-            </LinearLayout>
-
-    </GridLayout>
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/horizontal_barrier_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="l4, description" />
 
         <LinearLayout
+            android:id="@+id/buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="48px"
             android:orientation="horizontal"
-            android:paddingTop="48dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_barrier_4">
 
             <Button
                 android:id="@+id/add_shoes_dismiss_btn"
@@ -233,6 +211,8 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
