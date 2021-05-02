@@ -23,6 +23,9 @@ class WelcomeFragment : Fragment() {
         binding.instructionsNavBtn.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.navigation_instruction)
         )
+
+        setHasOptionsMenu(false)
+
         return binding.root
     }
 }

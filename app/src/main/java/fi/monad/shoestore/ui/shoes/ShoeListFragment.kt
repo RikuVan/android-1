@@ -1,16 +1,17 @@
 package fi.monad.shoestore.ui.shoes
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.RecyclerView
 import fi.monad.shoestore.R
+import fi.monad.shoestore.databinding.ActivityMainBinding.inflate
 import fi.monad.shoestore.databinding.FragmentShoeListBinding
 
 const val SHOE_ID = "show_id"
@@ -27,6 +28,7 @@ class ShoeListFragment: Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -55,5 +57,15 @@ class ShoeListFragment: Fragment() {
             findNavController(view).navigate(R.id.action_shoeListFragment_to_addShoesFragment)
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.logout_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
+                || super.onOptionsItemSelected(item)
     }
 }

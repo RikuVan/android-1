@@ -35,15 +35,4 @@ class MainActivity : AppCompatActivity() {
         NavOptions.Builder().setPopUpTo(R.id.navigation_shoe_list, true)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-         super.onCreateOptionsMenu(menu)
-         getMenuInflater().inflate(R.menu.logout_menu, menu)
-         return true
-
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return NavigationUI.onNavDestinationSelected(item, navController) || super.onOptionsItemSelected(item)
-    }
 }

@@ -23,6 +23,9 @@ class InstructionFragment : Fragment() {
         binding.shoeListNavBtn.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.navigation_shoe_list)
         )
+
+        setHasOptionsMenu(false)
+
         return binding.root
     }
 }
