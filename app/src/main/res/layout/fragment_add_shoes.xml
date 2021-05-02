@@ -131,11 +131,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{String.valueOf(addShoesViewModel.newShoes.size)}"
+            android:inputType="number"
             android:afterTextChanged="@{addShoesViewModel::setSize}"
             android:layout_margin="8dp"
             app:layout_constraintLeft_toRightOf="@+id/barrier_vert"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/horizontal_barrier_2" />
+            app:layout_constraintTop_toBottomOf="@id/horizontal_barrier_2"
+            android:digits="0123456789\." />
 
 
         <androidx.constraintlayout.widget.Barrier
