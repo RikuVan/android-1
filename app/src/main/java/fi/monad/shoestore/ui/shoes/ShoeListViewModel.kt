@@ -4,6 +4,7 @@ import android.text.Editable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import fi.monad.shoestore.R
 import fi.monad.shoestore.data.ShoesRepository
 import fi.monad.shoestore.data.model.Shoe
 import fi.monad.shoestore.data.model.getId
@@ -41,6 +42,7 @@ class ShoeListViewModel(private val shoesRepository: ShoesRepository) : ViewMode
         val copy = _shoes.value!!.toMutableList()
         _newShoes.value?.apply {
             id = this.getId()
+            images = listOf(R.drawable.shoes)
         }
         copy.add(_newShoes.value as Shoe)
         _shoes.value = copy.toList()

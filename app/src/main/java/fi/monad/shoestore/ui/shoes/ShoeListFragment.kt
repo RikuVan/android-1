@@ -5,18 +5,15 @@ import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import androidx.recyclerview.widget.RecyclerView
 import fi.monad.shoestore.R
-import fi.monad.shoestore.databinding.ActivityMainBinding.inflate
 import fi.monad.shoestore.databinding.FragmentShoeListBinding
+import fi.monad.shoestore.databinding.RowShoeItemBinding
 
-const val SHOE_ID = "show_id"
 
-class ShoeListFragment: Fragment() {
+class ShoeListFragment : Fragment() {
     private lateinit var binding: FragmentShoeListBinding
     private val viewModel: ShoeListViewModel by activityViewModels { ShoeListViewModelFactory() }
 
@@ -28,28 +25,28 @@ class ShoeListFragment: Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
+
         setHasOptionsMenu(true)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // viewModel used in Activity scope since it is shared with ShoeDetails
+
         binding.shoeListViewModel = viewModel
 
-        println(viewModel.newShoes.value?.toString())
-
-        val shoesAdapter = ShoeListAdapter { shoe ->
-            viewModel.setCurrent(shoe)
-            findNavController(view).navigate(R.id.navigation_shoe_details)
-        }
-
-        val recyclerView: RecyclerView = view.findViewById(R.id.shoe_list_recycler_view)
-        recyclerView.adapter = shoesAdapter
-
         viewModel.shoes.observe(viewLifecycleOwner, {
-            it?.let {
-                shoesAdapter.submitList(it)
+            it?.let { list ->
+                list.forEach { shoe ->
+                    val rowBinding = RowShoeItemBinding.inflate(layoutInflater)
+                    rowBinding.shoeVM = shoe
+                    binding.shoeListParent.addView(rowBinding.root)
+                    rowBinding.cardView.setOnClickListener(View.OnClickListener {
+                        viewModel.setCurrent(shoe)
+                        findNavController(view).navigate(R.id.navigation_shoe_details)
+                    })
+                }
             }
         })
 
@@ -68,4 +65,5 @@ class ShoeListFragment: Fragment() {
         return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
                 || super.onOptionsItemSelected(item)
     }
+
 }

@@ -1,5 +1,6 @@
 package fi.monad.shoestore.data
 
+import fi.monad.shoestore.R
 import fi.monad.shoestore.data.model.Shoe
 
 class ShoesRepository {
@@ -14,7 +15,7 @@ class ShoesRepository {
                 name = "Men's ballroom",
                 size = it + 1.0,
                 description = "Top quality ballroom dancing shoe made from the best leather for dancer's who want comfort, stability, and style.",
-                images = listOf("shoes")
+                images = listOf(R.drawable.shoes)
             )
         }
     }

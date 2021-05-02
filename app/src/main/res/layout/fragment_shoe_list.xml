@@ -10,6 +10,7 @@
             type="fi.monad.shoestore.ui.shoes.ShoeListViewModel" />
     </data>
 
+    <!-- Constraint layout needed for floating button positioning -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,17 +20,10 @@
             android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/shoe_list_parent"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/shoe_list_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
 
         </ScrollView>
 

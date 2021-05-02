@@ -1,22 +1,16 @@
 package fi.monad.shoestore.ui.login
 
-import android.app.ActionBar
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.RecyclerView
 import fi.monad.shoestore.R
 import fi.monad.shoestore.databinding.FragmentLoginBinding
-import fi.monad.shoestore.ui.shoes.ShoeListAdapter
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
