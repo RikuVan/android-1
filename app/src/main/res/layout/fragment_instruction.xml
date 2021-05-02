@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="fi.monad.shoestore.ui.instruction.InstructionFragment">
 
+    <!--Tried with Linear layout and constraint, both worked but constraint seems a bit easier to position elements with-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

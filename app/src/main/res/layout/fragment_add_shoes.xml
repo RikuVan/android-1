@@ -12,6 +12,7 @@
             type="fi.monad.shoestore.ui.shoes.ShoeListViewModel" />
     </data>
 
+    <!--Originally implemented this with grid, which was easier to reason about but the constriaint layout here makes the layout much flatter, perhaps easier to understand at a glance-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

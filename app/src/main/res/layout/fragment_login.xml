@@ -11,6 +11,7 @@
             type="fi.monad.shoestore.ui.login.LoginViewModel" />
     </data>
 
+    <!--Much easier to center these in the screen with buttons and inputs with contraint layout-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

@@ -12,6 +12,7 @@
             type="fi.monad.shoestore.ui.shoes.ShoeListViewModel" />
     </data>
 
+    <!--Linear layout would work here too-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
