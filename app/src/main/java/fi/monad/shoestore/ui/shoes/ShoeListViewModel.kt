@@ -64,7 +64,11 @@ class ShoeListViewModel(private val shoesRepository: ShoesRepository) : ViewMode
 
     fun setSize(s: Editable) {
         _newShoes.value?.size = s.toString().let {
-            if(it.isNullOrEmpty()) 0.0 else it.toDouble()
+            if(it.isNullOrEmpty()) 0.0 else try {
+                it.toDouble()
+            } catch(e: Exception) {
+                0.0
+            }
         }
     }
 
