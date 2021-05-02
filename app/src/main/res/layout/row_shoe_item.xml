@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="shoeVM"
             type="fi.monad.shoestore.data.model.Shoe" />
@@ -17,7 +18,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="center"
             app:cardCornerRadius="4dp"
@@ -25,7 +26,7 @@
             app:cardMaxElevation="1dp"
             app:cardUseCompatPadding="true">
 
-            <RelativeLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:elevation="10dp">
@@ -37,24 +38,35 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:imageResource="@{shoeVM.images[0]}"/>
+                    android:imageResource="@{shoeVM.images[0]}"
+                    app:layout_constraintLeft_toRightOf="@id/shoe_name_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/shoe_name_text"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="70dp"
-                    android:gravity="center_vertical"
+                    android:gravity="start|center_vertical"
                     android:text="@{shoeVM.name}"
-                    android:textAppearance="?attr/textAppearanceHeadline5" />
+                    android:textAppearance="?attr/textAppearanceHeadline5"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/shoe_name_text"
+                    app:layout_constraintRight_toLeftOf="@id/show_details"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <LinearLayout
+                    android:id="@+id/show_details"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentEnd="true"
-                    
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/shoe_name_text"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:id="@+id/shoe_size"
@@ -63,6 +75,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="8dp"
+                        android:gravity="end|center_vertical"
                         android:text="@{String.valueOf(shoeVM.size)}" />
 
                     <TextView
@@ -72,10 +85,11 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="4dp"
+                        android:gravity="end|center_vertical"
                         android:text="@{shoeVM.company}" />
                 </LinearLayout>
 
-            </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 
